@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +9,15 @@
 </head>
 <body>
     <div class="chat-container">
+        <div class="chat-header">
+            <h1>与 LM stdio 聊天</h1>
+        </div>
         <div class="chat-box" id="chat-box">
             <!-- 聊天记录将显示在这里 -->
         </div>
         <form id="chat-form" class="chat-form">
-            <input type="text" id="message" class="message-input" placeholder="Enter your message..." required />
-            <button type="submit" class="send-btn">Send</button>
+            <input type="text" id="message" class="message-input" placeholder="输入您的消息..." required />
+            <button type="submit" class="send-btn">发送</button>
         </form>
     </div>
 
@@ -24,7 +27,7 @@
                 e.preventDefault();
                 var message = $('#message').val();
                 $('#message').val('');
-                $('#chat-box').append('<div class="user-message"><strong>You:</strong> ' + message + '</div>');
+                $('#chat-box').append('<div class="user-message"><strong>您:</strong> ' + message + '</div>');
                 $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);  // 滚动到最新消息
 
                 $.ajax({
@@ -37,7 +40,7 @@
                         $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);  // 滚动到最新消息
                     },
                     error: function(){
-                        $('#chat-box').append('<div class="bot-message"><strong>Error:</strong> Something went wrong!</div>');
+                        $('#chat-box').append('<div class="bot-message"><strong>错误:</strong> 请求失败，请稍后再试。</div>');
                     }
                 });
             });
